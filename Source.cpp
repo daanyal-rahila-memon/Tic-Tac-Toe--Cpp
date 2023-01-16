@@ -7,7 +7,7 @@ using namespace std;
 
 string player_one, player_two, choice = "y";
 bool mark = true;
-int drawn = 0, playerOne_win = 0, playerTwo_win = 0, tie = 0;
+int drawn = 0, playerOne_win = 0, playerTwo_win = 0, tiles = 0;
 
 void main_menu();
 void play_game();
@@ -527,7 +527,7 @@ void check(string str[3][3], int i, int toss)
 //check_to_win Function helps to recogonise which Player has won the game or either it is drawn.
 void check_to_win(int toss, string str[3][3])
 {
-    tie++;
+    tiles++;
 	if (toss == 0)
 	{
 		if (str[0][0] == "O" && str[0][1] == "O" && str[0][2] == "O" || str[0][0] == "O" && str[1][0] == "O" && str[2][0] == "O" || str[0][0] == "O" && str[1][1] == "O" && str[2][2] == "O")
@@ -822,22 +822,23 @@ void check_to_win(int toss, string str[3][3])
 			}
 		}
 	}
-	// if(tie == 9)
-	// {
-	// 	cout << "The game has drawn...Try again Next Time :)" << endl;
-	// 	drawn++;
-	// 	cout << "Do you want to Play Again?" << endl;
-	// 	cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
-	// 	cin >> choice;
-	// 	if (choice == "y" || choice == "Y")
-	// 	{
-	// 		main_menu();
-	// 	}
-	// 	else
-	// 	{
-	// 		exit(0);
-	// 	}
-	// }
+
+	if(tiles == 9)			// check for if all the tiles are filled or not
+	{
+		cout << "The game has drawn...Try again Next Time :)" << endl;
+		drawn++;
+		cout << "Do you want to Play Again?" << endl;
+		cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
+		cin >> choice;
+		if (choice == "y" || choice == "Y")
+		{
+			main_menu();
+		}
+		else
+		{
+			exit(0);
+		}
+	}
 }
 
  //Instructions Function tells you the Instruction of Game.
