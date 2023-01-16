@@ -2,7 +2,6 @@
 #include <cstring>
 #include <string>
 #include <ctime>
-// #include <windows.h>
 
 using namespace std;
 
@@ -345,7 +344,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[0][0] == "O" || str[0][0] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
-				// Sleep(3);
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerOne_turn(str, toss);
 			}
 		}
@@ -354,6 +354,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[0][1] == "O" || str[0][1] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerOne_turn(str, toss);
 			}
 		}
@@ -362,6 +364,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[0][2] == "O" || str[0][2] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerOne_turn(str, toss);
 			}
 		}
@@ -370,6 +374,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[1][0] == "O" || str[1][0] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerOne_turn(str, toss);
 			}
 		}
@@ -378,6 +384,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[1][1] == "O" || str[1][1] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerOne_turn(str, toss);
 			}
 		}
@@ -386,6 +394,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[1][2] == "O" || str[1][2] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerOne_turn(str, toss);
 			}
 		}
@@ -394,6 +404,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[2][0] == "O" || str[2][0] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerOne_turn(str, toss);
 			}
 		}
@@ -402,6 +414,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[2][1] == "O" || str[2][1] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerOne_turn(str, toss);
 			}
 		}
@@ -410,6 +424,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[2][2] == "O" || str[2][2] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerOne_turn(str, toss);
 			}
 		}
@@ -421,6 +437,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[0][0] == "O" || str[0][0] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerTwo_turn(str, toss);
 			}
 		}
@@ -429,6 +447,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[0][1] == "O" || str[0][1] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerTwo_turn(str, toss);
 			}
 		}
@@ -437,6 +457,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[0][2] == "O" || str[0][2] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerTwo_turn(str, toss);
 			}
 		}
@@ -445,6 +467,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[1][0] == "O" || str[1][0] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerTwo_turn(str, toss);
 			}
 		}
@@ -453,6 +477,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[1][1] == "O" || str[1][1] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerTwo_turn(str, toss);
 			}
 		}
@@ -461,6 +487,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[1][2] == "O" || str[1][2] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerTwo_turn(str, toss);
 			}
 		}
@@ -469,6 +497,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[2][0] == "O" || str[2][0] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerTwo_turn(str, toss);
 			}
 		}
@@ -477,6 +507,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[2][1] == "O" || str[2][1] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerTwo_turn(str, toss);
 			}
 		}
@@ -485,6 +517,8 @@ void check(string str[3][3], int i, int toss)
 			if (str[2][2] == "O" || str[2][2] == "X")
 			{
 				cout << "This place has already marked, choose another one :)" << endl;
+				cout << "Press any key to continue..." << endl;
+				int c = getchar();
 				playerTwo_turn(str, toss);
 			}
 		}
