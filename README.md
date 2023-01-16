@@ -12,3 +12,4 @@ You can play this game as many times you want in a single run, and it will keep 
 <img width="525" alt="image" src="https://user-images.githubusercontent.com/73169791/212774323-65da2659-bdbe-46d8-975f-2c1eba713011.png">
 <img width="525" alt="image" src="https://user-images.githubusercontent.com/73169791/212774404-9f13c61f-395b-40af-a75e-9df5254e23cd.png">
 <img width="512" alt="image" src="https://user-images.githubusercontent.com/73169791/212774543-b9d052b7-980c-49b9-bbfb-5e056536b27b.png">
+<img width="497" alt="image" src="https://user-images.githubusercontent.com/73169791/212776252-3e2ba8ed-3175-4750-a9ac-849c5b0e4c8c.png">
