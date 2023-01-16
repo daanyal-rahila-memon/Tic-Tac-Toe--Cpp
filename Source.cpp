@@ -155,12 +155,11 @@ void playerOne_turn(string str[3][3], int toss)
 		cin >> turn;
 	}
 
-	int i = turn;
 	switch (turn)
 	{
 	case 1:
 	{
-		check(str, i, toss);			// check() inspects if the place has already been marked or not.
+		check(str, turn, toss);			// check() inspects if the place has already been marked or not.
 		str[0][0] = "O";
 		check_to_win(toss, str);
 		playerTwo_turn(str, toss);
@@ -168,7 +167,7 @@ void playerOne_turn(string str[3][3], int toss)
 	}
 	case 2:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[0][1] = "O";
 		check_to_win(toss, str);
 		playerTwo_turn(str, toss);
@@ -176,7 +175,7 @@ void playerOne_turn(string str[3][3], int toss)
 	}
 	case 3:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[0][2] = "O";
 		check_to_win(toss, str);
 		playerTwo_turn(str, toss);
@@ -184,7 +183,7 @@ void playerOne_turn(string str[3][3], int toss)
 	}
 	case 4:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[1][0] = "O";
 		check_to_win(toss, str);
 		playerTwo_turn(str, toss);
@@ -192,7 +191,7 @@ void playerOne_turn(string str[3][3], int toss)
 	}
 	case 5:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[1][1] = "O";
 		check_to_win(toss, str);
 		playerTwo_turn(str, toss);
@@ -200,7 +199,7 @@ void playerOne_turn(string str[3][3], int toss)
 	}
 	case 6:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[1][2] = "O";
 		check_to_win(toss, str);
 		playerTwo_turn(str, toss);
@@ -208,7 +207,7 @@ void playerOne_turn(string str[3][3], int toss)
 	}
 	case 7:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[2][0] = "O";
 		check_to_win(toss, str);
 		playerTwo_turn(str, toss);
@@ -216,7 +215,7 @@ void playerOne_turn(string str[3][3], int toss)
 	}
 	case 8:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[2][1] = "O";
 		check_to_win(toss, str);
 		playerTwo_turn(str, toss);
@@ -224,7 +223,7 @@ void playerOne_turn(string str[3][3], int toss)
 	}
 	case 9:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[2][2] = "O";
 		check_to_win(toss, str);
 		playerTwo_turn(str, toss);
@@ -254,12 +253,12 @@ void playerTwo_turn(string str[3][3], int toss)
 		cout << "You got only 9 places to choose, kindly choose one of them: ";
 		cin >> turn;
 	}
-	int i = turn;
+	
 	switch (turn)
 	{
 	case 1:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[0][0] = "X";
 		check_to_win(toss, str);
 		playerOne_turn(str, toss);
@@ -267,7 +266,7 @@ void playerTwo_turn(string str[3][3], int toss)
 	}
 	case 2:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[0][1] = "X";
 		check_to_win(toss, str);
 		playerOne_turn(str, toss);
@@ -275,7 +274,7 @@ void playerTwo_turn(string str[3][3], int toss)
 	}
 	case 3:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[0][2] = "X";
 		check_to_win(toss, str);
 		playerOne_turn(str, toss);
@@ -283,7 +282,7 @@ void playerTwo_turn(string str[3][3], int toss)
 	}
 	case 4:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[1][0] = "X";
 		check_to_win(toss, str);
 		playerOne_turn(str, toss);
@@ -291,7 +290,7 @@ void playerTwo_turn(string str[3][3], int toss)
 	}
 	case 5:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[1][1] = "X";
 		check_to_win(toss, str);
 		playerOne_turn(str, toss);
@@ -299,7 +298,7 @@ void playerTwo_turn(string str[3][3], int toss)
 	}
 	case 6:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[1][2] = "X";
 		check_to_win(toss, str);
 		playerOne_turn(str, toss);
@@ -307,7 +306,7 @@ void playerTwo_turn(string str[3][3], int toss)
 	}
 	case 7:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[2][0] = "X";
 		check_to_win(toss, str);
 		playerOne_turn(str, toss);
@@ -315,7 +314,7 @@ void playerTwo_turn(string str[3][3], int toss)
 	}
 	case 8:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[2][1] = "X";
 		check_to_win(toss, str);
 		playerOne_turn(str, toss);
@@ -323,7 +322,7 @@ void playerTwo_turn(string str[3][3], int toss)
 	}
 	case 9:
 	{
-		check(str, i, toss);
+		check(str, turn, toss);
 		str[2][2] = "X";
 		check_to_win(toss, str);
 		playerOne_turn(str, toss);
@@ -528,7 +527,7 @@ void check(string str[3][3], int i, int toss)
 //check_to_win Function helps to recogonise which Player has won the game or either it is drawn.
 void check_to_win(int toss, string str[3][3])
 {
-    // tie++;
+    tie++;
 	if (toss == 0)
 	{
 		if (str[0][0] == "O" && str[0][1] == "O" && str[0][2] == "O" || str[0][0] == "O" && str[1][0] == "O" && str[2][0] == "O" || str[0][0] == "O" && str[1][1] == "O" && str[2][2] == "O")
