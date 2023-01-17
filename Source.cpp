@@ -7,7 +7,7 @@ using namespace std;
 
 string player_one, player_two, choice = "y";
 bool mark = true;
-int drawn = 0, playerOne_win = 0, playerTwo_win = 0, tiles = 0;
+int drawn = 0, playerOne_win = 0, playerTwo_win = 0, tiles = 0, game = 0;
 
 void main_menu();
 void play_game();
@@ -27,7 +27,8 @@ int main()
 	{
 		main_menu();
 	}
-	system("pause");
+
+	// system("pause");		// uncomment this for Windows
 	return 0;
 }
 
@@ -35,12 +36,28 @@ int main()
 void main_menu()
 {
 	char choose;
-	cout << "===========Welcome to 'TIC TAC TOE!' (PLAYER vs PLAYER)============" << endl;
-	cout << "Below is the 'Main Menu' for you;" << endl;
+
+	cout << endl << endl << endl;
+	cout << "=========== Welcome to 'TIC TAC TOE!' (PLAYER vs PLAYER) ============" << endl << endl;
+
+	if (game == 0)
+	{
+		cout << "Enter the Name of Player 1: ";
+		getline(cin, player_one);
+
+		cout << "Enter the Name of Player 2: ";
+		getline(cin, player_two);
+		
+		game++;
+	}
+
+	cout << endl << endl;
+	cout << "Below is the 'Main Menu' for you;" << endl << endl;
+
 	cout << "Press 1 for Play Game" << endl;
 	cout << "Press 2 for Instructions" << endl;
 	cout << "Press 3 for Score" << endl;
-	cout << "Press 4 for Credits" << endl;
+	cout << "Press 4 for Credits" << endl << endl;
 	cout << "Choose one of the above: ";
 	cin >> choose;
 
@@ -93,25 +110,26 @@ void main_menu()
 //Play Game Function lead you to play game Player Vs Player
 void play_game()
 {
-	cout << "Welcome to Game!" << endl;
+	tiles = 0;
+
+	cout << endl << endl << endl;
+	cout << "=========== Welcome To The Game! =========== " << endl << endl;
 
 	cin.ignore();
-
-	cout << "Enter the Name of Player 1: ";
-	getline(cin, player_one);
-
-	cout << "Enter the Name of Player 2: ";
-	getline(cin, player_two);
 
 	string str[3][3] = { {"1","2","3"},{"4","5","6"},{"7","8","9"} };
 	int toss = player_toss();
 	if (toss == 0)
 	{
 		cout << player_one << " won the Toss!" << endl;
+		cout << "Press any key to continue..." << endl;
+		int c = getchar();
 	}
 	else
 	{
 		cout << player_two << " won the Toss!" << endl;
+		cout << "Press any key to continue..." << endl;
+		int c = getchar();
 	}
 	if (toss == 0)
 	{
@@ -134,7 +152,8 @@ int player_toss()
 //playerOne_turn Function helps Player One to Play its Turn.
 void playerOne_turn(string str[3][3], int toss)
 {
-	system("cls");		// clear the screen
+	// system("cls");		// clear the screen in Windows
+	system("clear");	// clear the screen in Linux/Mac
 
 	toss = 0;
 
@@ -143,10 +162,10 @@ void playerOne_turn(string str[3][3], int toss)
 	cout << "___ ___ ___" << endl;
 	cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
 	cout << "___ ___ ___" << endl;
-	cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl;
+	cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
 
 	int turn;
-	cout << "'" << player_one << "'" << " Turn. At which place you want to put your Mark: ";
+	cout << player_one << "'s Turn. At which place you want to put your Mark: ";
 	cin >> turn;
 
 	while (turn < 1 || turn > 9)		// check for a valid position
@@ -233,22 +252,28 @@ void playerOne_turn(string str[3][3], int toss)
 		break;
 	}
 }
+
 //playerTwo_turn Function helps Player Two to Play its Turn.
 void playerTwo_turn(string str[3][3], int toss)
 {
-	system("cls");
+	// system("cls");		// clear the screen in Windows
+	system("clear");	// clear the screen in Linux/Mac
+
 	toss = 1;
+
 	cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
 	cout << "___ ___ ___" << endl;
 	cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
 	cout << "___ ___ ___" << endl;
-	cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl;
+	cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+
 	bool mark = true;
 	int turn;
-	cout << player_two << " Turn: ";
-	cout << "At which place you want to put your Mark: ";
+
+	cout << player_two << "'s Turn. At which place you want to put your Mark: ";
 	cin >> turn;
-	while (turn<1 || turn>9)
+
+	while (turn < 1 || turn > 9)
 	{
 		cout << "You got only 9 places to choose, kindly choose one of them: ";
 		cin >> turn;
@@ -532,8 +557,22 @@ void check_to_win(int toss, string str[3][3])
 	{
 		if (str[0][0] == "O" && str[0][1] == "O" && str[0][2] == "O" || str[0][0] == "O" && str[1][0] == "O" && str[2][0] == "O" || str[0][0] == "O" && str[1][1] == "O" && str[2][2] == "O")
 		{
-			cout << "Congratulations!" << player_one << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_one << " has won the Game" << endl << endl << endl; 
+			
 			playerOne_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -548,8 +587,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[0][0] == "O" && str[0][1] == "O" && str[0][2] == "O" || str[0][1] == "O" && str[1][1] == "O" && str[2][1] == "O")
 		{
-			cout << "Congratulations!" << player_one << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_one << " has won the Game" << endl << endl << endl; 
+			
 			playerOne_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -564,8 +617,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[0][0] == "O" && str[0][1] == "O" && str[0][2] == "O" || str[0][2] == "O" && str[1][2] == "O" && str[2][2] == "O" || str[0][2] == "O" && str[1][1] == "O" && str[2][0] == "O")
 		{
-			cout << "Congratulations!" << player_one << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_one << " has won the Game" << endl << endl << endl; 
+			
 			playerOne_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -580,8 +647,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[0][0] == "O" && str[1][0] == "O" && str[2][0] == "O" || str[1][0] == "O" && str[1][1] == "O" && str[1][2] == "O")
 		{
-			cout << "Congratulations!" << player_one << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_one << " has won the Game" << endl << endl << endl; 
+			
 			playerOne_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -596,8 +677,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[0][0] == "O" && str[1][0] == "O" && str[2][0] == "O" || str[2][0] == "O" && str[2][1] == "O" && str[2][2] == "O" || str[2][0] == "O" && str[1][1] == "O" && str[0][2] == "O")
 		{
-			cout << "Congratulations!" << player_one << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_one << " has won the Game" << endl << endl << endl; 
+			
 			playerOne_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -612,8 +707,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[2][0] == "O" && str[2][1] == "O" && str[2][2] == "O" || str[0][1] == "O" && str[1][1] == "O" && str[2][1] == "O")
 		{
-			cout << "Congratulations!" << player_one << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_one << " has won the Game" << endl << endl << endl; 
+			
 			playerOne_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -628,8 +737,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[2][0] == "O" && str[2][1] == "O" && str[2][2] == "O" || str[0][2] == "O" && str[1][2] == "O" && str[2][2] == "O")
 		{
-			cout << "Congratulations!" << player_one << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_one << " has won the Game" << endl << endl << endl; 
+			
 			playerOne_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -644,8 +767,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[1][0] == "O" && str[1][1] == "O" && str[1][2] == "O" || str[0][2] == "O" && str[1][2] == "O" && str[2][2] == "O")
 		{
-			cout << "Congratulations!" << player_one << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_one << " has won the Game" << endl << endl << endl; 
+			
 			playerOne_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -660,8 +797,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[1][0] == "O" && str[1][1] == "O" && str[1][2] == "O" || str[0][1] == "O" && str[1][1] == "O" && str[2][1] == "O")
 		{
-			cout << "Congratulations!" << player_one << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_one << " has won the Game" << endl << endl << endl; 
+			
 			playerOne_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -679,8 +830,22 @@ void check_to_win(int toss, string str[3][3])
 	{
 		if (str[0][0] == "X" && str[0][1] == "X" && str[0][2] == "X" || str[0][0] == "X" && str[1][0] == "X" && str[2][0] == "X" || str[0][0] == "X" && str[1][1] == "X" && str[2][2] == "X")
 		{
-			cout << "Congratulations! " << player_two << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_two << " has won the Game" << endl << endl << endl; 
+			
 			playerTwo_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -695,8 +860,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[0][0] == "X" && str[0][1] == "X" && str[0][2] == "X" || str[0][1] == "X" && str[1][1] == "X" && str[2][1] == "X")
 		{
-			cout << "Congratulations! " << player_two << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_two << " has won the Game" << endl << endl << endl; 
+			
 			playerTwo_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -711,8 +890,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[0][0] == "X" && str[0][1] == "X" && str[0][2] == "X" || str[0][2] == "X" && str[1][2] == "X" && str[2][2] == "X" || str[0][2] == "X" && str[1][1] == "X" && str[2][0] == "X")
 		{
-			cout << "Congratulations! " << player_two << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_two << " has won the Game" << endl << endl << endl; 
+			
 			playerTwo_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -727,8 +920,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[0][0] == "X" && str[1][0] == "X" && str[2][0] == "X" || str[1][0] == "X" && str[1][1] == "X" && str[1][2] == "X")
 		{
-			cout << "Congratulations! " << player_two << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_two << " has won the Game" << endl << endl << endl; 
+			
 			playerTwo_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -743,8 +950,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[0][0] == "O" && str[1][0] == "O" && str[2][0] == "O" || str[2][0] == "O" && str[2][1] == "O" && str[2][2] == "O" || str[2][0] == "O" && str[1][1] == "O" && str[0][2] == "O")
 		{
-			cout << "Congratulations! " << player_two << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_two << " has won the Game" << endl << endl << endl; 
+			
 			playerTwo_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -759,8 +980,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[2][0] == "O" && str[2][1] == "O" && str[2][2] == "O" || str[0][1] == "O" && str[1][1] == "O" && str[2][1] == "O")
 		{
-			cout << "Congratulations! " << player_two << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_two << " has won the Game" << endl << endl << endl; 
+			
 			playerTwo_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -775,8 +1010,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[2][0] == "O" && str[2][1] == "O" && str[2][2] == "O" || str[0][2] == "O" && str[1][2] == "O" && str[2][2] == "O")
 		{
-			cout << "Congratulations! " << player_two << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_two << " has won the Game" << endl << endl << endl; 
+			
 			playerTwo_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -791,8 +1040,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[1][0] == "X" && str[1][1] == "X" && str[1][2] == "X" || str[0][2] == "X" && str[1][2] == "X" && str[2][2] == "X")
 		{
-			cout << "Congratulations! " << player_two << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_two << " has won the Game" << endl << endl << endl; 
+			
 			playerTwo_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -807,8 +1070,22 @@ void check_to_win(int toss, string str[3][3])
 		}
 		else if (str[1][0] == "X" && str[1][1] == "X" && str[1][2] == "X" || str[0][1] == "X" && str[1][1] == "X" && str[2][1] == "X")
 		{
-			cout << "Congratulations! " << player_two << " has won the Game" << endl;
+			cout << endl << endl;
+
+			// system("cls");		// clear the screen in Windows
+			system("clear");	// clear the screen in Linux/Mac
+
+			// Drawing Game-Board
+			cout << " " << str[0][0] << " | " << str[0][1] << " | " << str[0][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[1][0] << " | " << str[1][1] << " | " << str[1][2] << " " << endl;
+			cout << "___ ___ ___" << endl;
+			cout << " " << str[2][0] << " | " << str[2][1] << " | " << str[2][2] << " " << endl << endl;
+			
+			cout << "Congratulations! " << player_two << " has won the Game" << endl << endl << endl; 
+			
 			playerTwo_win++;
+
 			cout << "Do you want to Play Again?" << endl;
 			cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
 			cin >> choice;
@@ -825,7 +1102,8 @@ void check_to_win(int toss, string str[3][3])
 
 	if(tiles == 9)			// check for if all the tiles are filled or not
 	{
-		cout << "The game has drawn...Try again Next Time :)" << endl;
+		cout << endl << endl << endl;
+		cout << "The game has drawn... Better Luck Next Time :)" << endl << endl << endl;
 		drawn++;
 		cout << "Do you want to Play Again?" << endl;
 		cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'Exit': ";
@@ -844,8 +1122,13 @@ void check_to_win(int toss, string str[3][3])
  //Instructions Function tells you the Instruction of Game.
  void instructions()
  {
+	 cout << endl << endl << endl;
+	 cout << "---------------------------------------------------" << endl;
+	 cout << "=========== Instructions ============" << endl << endl;
 	 cout << "The Mark of Player 1 is: O" << endl;
-	 cout << "The Mark of Player 2 is: X" << endl;
+	 cout << "The Mark of Player 2 is: X" << endl << endl;
+	 cout << "---------------------------------------------------" << endl;
+	 cout << endl << endl << endl;
 	 cout << "Do you want to go to 'Main Menu'?" << endl;
 	 cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'No': ";
 	 cin >> choice;
@@ -862,12 +1145,16 @@ void check_to_win(int toss, string str[3][3])
 //Score Function shows you the Score Board.
  void score()
 {
-	cout << "'Welcome to Score Board'" << endl;
+	cout << endl << endl << endl;
+	cout << "---------------------------------------------------" << endl;
+	cout << "=========== Score Board ============" << endl << endl;
 	cout << "Games won by" << player_one << ": " << playerOne_win << endl;
 	cout << "Games won by" << player_two << ": " << playerTwo_win << endl;
-	cout << "Games that have been drawn: " << drawn << endl;
+	cout << "Games that have been drawn: " << drawn << endl << endl;
+	cout << "---------------------------------------------------" << endl;
+	cout << endl << endl << endl;
 	cout << "Do you want to go to 'Main Menu'?" << endl;
-	cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'No': ";
+	cout << "Press 'y' for 'Yes' & 'Any Other Key' to 'End the Game': ";
 	cin >> choice;
 	if (choice == "y" || choice == "Y")
 	{
@@ -882,10 +1169,15 @@ void check_to_win(int toss, string str[3][3])
  //Credits Function shows you by whom this game is been made.
  void credits()
  {
+	 cout << endl << endl << endl;
+	 cout << "---------------------------------------------------" << endl;
+	 cout << "=========== Credits ============" << endl << endl;
 	 cout << "This game is made by 'Muhammad Daanyal'" << endl;
-	 cout << "We'll meet soon with better games :)" << endl;
+	 cout << "We'll meet soon with better games :)" << endl << endl;
+	 cout << "---------------------------------------------------" << endl;
+	 cout << endl << endl << endl;
 	 cout << "Do you want to go to 'Main Menu'?" << endl;
-	 cout << "Press 'y' for 'Yes' & 'Any Other Key' for 'No': ";
+	 cout << "Press 'y' for 'Yes' & 'Any Other Key' to 'End the Game': ";
 	 cin >> choice;
 	 if (choice == "y" || choice == "Y")
 	 {
